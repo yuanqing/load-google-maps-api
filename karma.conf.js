@@ -1,4 +1,4 @@
-module.exports = (config) => {
+module.exports = function(config) {
   config.set({
     basePath: '.',
     browserNoActivityTimeout: 20000,
