@@ -16,7 +16,6 @@ module.exports = (config) => {
     ],
     plugins: [
       'karma-browserify',
-      'karma-coverage',
       'karma-chrome-launcher',
       'karma-tap',
       'karma-tape-reporter'
