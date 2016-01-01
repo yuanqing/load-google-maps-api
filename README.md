@@ -41,20 +41,21 @@ import loadGoogleMapsAPI from 'load-google-maps-api';
 
 ### loadGoogleMapsAPI([opts])
 
-Returns a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise).
+Returns a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise). (See [Usage](#usage).)
 
 - **Fulfilled** if load was successful. The fulfilled callback is passed the `google.maps` object.
 - **Rejected** if we weren&rsquo;t able to load the Google Maps API after `opts.timeout`.
 
-`opts` is an object literal:
+`opts` is an optional object literal:
 
   Key | Description | Default
   :--|:--|:--
-  `libraries` | [Supplemental libraries to load]((https://developers.google.com/maps/documentation/javascript/libraries)) | `[]`
+  `client` | [Client ID](https://developers.google.com/maps/documentation/javascript/get-api-key#specify-a-client-id-when-loading-the-api) | `undefined`
   `key` | [Your API key](https://developers.google.com/maps/documentation/javascript/get-api-key#specify-a-key-when-loading-the-api) | `undefined`
-  `client` | [The client ID]((https://developers.google.com/maps/documentation/javascript/get-api-key#specify-a-client-id-when-loading-the-api)) | `undefined`
-  `v` | [API version]((https://developers.google.com/maps/documentation/javascript/versions)) | `undefined`
-  `timeout` | Time in milliseconds before rejecting the promise | 10000
+  `language` | [Language](https://developers.google.com/maps/documentation/javascript/examples/map-rtl) | `undefined`
+  `libraries` | [Supplemental libraries to load](https://developers.google.com/maps/documentation/javascript/libraries) | `[]`
+  `timeout` | Time in milliseconds before rejecting the promise | `10000`
+  `v` | [API version](https://developers.google.com/maps/documentation/javascript/versions) | `undefined`
 
 ## Installation
 
