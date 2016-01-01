@@ -22,7 +22,7 @@ export default ({
     if (client) params.push('client=' + client);
     if (key) params.push('key=' + key);
     if (language) params.push('language=' + language);
-    libraries = [].concat(libraries); // Ensure that `libaries` is an array
+    libraries = [].concat(libraries); // Ensure that `libraries` is an array
     if (libraries.length) params.push('libraries=' + libraries.join(','));
     if (v) params.push('v=' + v);
     scriptElement.src = 'https://maps.googleapis.com/maps/api/js?' + params.join('&');
