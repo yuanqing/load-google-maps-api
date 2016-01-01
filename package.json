@@ -30,6 +30,7 @@
   "scripts": {
     "build": "babel index.js --out-dir lib",
     "clean": "rimraf lib",
+    "lint": "eslint index.js karma.conf.js",
     "prepublish": "npm run clean && npm run build",
     "test": "karma start karma.conf.js --single-run"
   }
