@@ -1,9 +1,10 @@
 export default ({
-  libraries = [],
-  key,
   client,
+  key,
+  language,
+  libraries = [],
+  timeout = 10000,
   v,
-  timeout = 10000
 } = {}) => {
 
   const callbackName = '__googleMapsApiOnLoadCallback';
@@ -18,10 +19,11 @@ export default ({
     // Prepare the `script` tag to be inserted into the page.
     const scriptElement = document.createElement('script');
     const params = ['callback=' + callbackName];
+    if (client) params.push('client=' + client);
+    if (key) params.push('key=' + key);
+    if (language) params.push('language=' + language);
     libraries = [].concat(libraries); // Ensure that `libaries` is an array
     if (libraries.length) params.push('libraries=' + libraries.join(','));
-    if (key) params.push('key=' + key);
-    if (client) params.push('client=' + client);
     if (v) params.push('v=' + v);
     scriptElement.src = 'https://maps.googleapis.com/maps/api/js?' + params.join('&');
 
