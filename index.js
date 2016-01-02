@@ -4,7 +4,7 @@ export default ({
   language,
   libraries = [],
   timeout = 10000,
-  v,
+  v
 } = {}) => {
 
   const callbackName = '__googleMapsApiOnLoadCallback';
