@@ -39,22 +39,22 @@ This module abstracts this ceremony away, and fits better with [Browserify](http
 import loadGoogleMapsAPI from 'load-google-maps-api';
 ```
 
-### loadGoogleMapsAPI([opts])
+### loadGoogleMapsAPI([options])
 
 Returns a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise). (See [Usage](#usage).)
 
 - **Fulfilled** if load was successful. The fulfilled callback is passed the `google.maps` object.
-- **Rejected** if we weren&rsquo;t able to load the Google Maps API after `opts.timeout`.
+- **Rejected** if we weren&rsquo;t able to load the Google Maps API after `options.timeout`.
 
-`opts` is an optional object literal:
+`options` is an optional object literal:
 
   Key | Description | Default
   :--|:--|:--
   `client` | [Client ID](https://developers.google.com/maps/documentation/javascript/get-api-key#specify-a-client-id-when-loading-the-api) | `undefined`
   `key` | [Your API key](https://developers.google.com/maps/documentation/javascript/get-api-key#specify-a-key-when-loading-the-api) | `undefined`
   `language` | [Language](https://developers.google.com/maps/documentation/javascript/localization#Language) | `undefined`
-  `region` | [Region](https://developers.google.com/maps/documentation/javascript/localization#Region) | `undefined`
   `libraries` | [Supplemental libraries to load](https://developers.google.com/maps/documentation/javascript/libraries) | `[]`
+  `region` | [Region](https://developers.google.com/maps/documentation/javascript/localization#Region) | `undefined`
   `timeout` | Time in milliseconds before rejecting the promise | `10000`
   `v` | [API version](https://developers.google.com/maps/documentation/javascript/versions) | `undefined`
 
@@ -63,7 +63,7 @@ Returns a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Refe
 Install via [npm](https://npmjs.com):
 
 ```
-$ npm i --save load-google-maps-api
+$ npm install --save load-google-maps-api
 ```
 
 ## License
