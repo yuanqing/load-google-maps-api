@@ -2,6 +2,7 @@ export default ({
   client,
   key,
   language,
+  region,
   libraries = [],
   timeout = 10000,
   v
@@ -22,6 +23,7 @@ export default ({
     if (client) params.push(`client=${client}`);
     if (key) params.push(`key=${key}`);
     if (language) params.push(`language=${language}`);
+    if (region) params.push(`region=${region}`);
     libraries = [].concat(libraries); // Ensure that `libraries` is an array
     if (libraries.length) params.push(`libraries=${libraries.join(',')}`);
     if (v) params.push(`v=${v}`);

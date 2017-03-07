@@ -52,7 +52,8 @@ Returns a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Refe
   :--|:--|:--
   `client` | [Client ID](https://developers.google.com/maps/documentation/javascript/get-api-key#specify-a-client-id-when-loading-the-api) | `undefined`
   `key` | [Your API key](https://developers.google.com/maps/documentation/javascript/get-api-key#specify-a-key-when-loading-the-api) | `undefined`
-  `language` | [Language](https://developers.google.com/maps/documentation/javascript/examples/map-rtl) | `undefined`
+  `language` | [Language](https://developers.google.com/maps/documentation/javascript/localization#Language) | `undefined`
+  `region` | [Region](https://developers.google.com/maps/documentation/javascript/localization#Region) | `undefined`
   `libraries` | [Supplemental libraries to load](https://developers.google.com/maps/documentation/javascript/libraries) | `[]`
   `timeout` | Time in milliseconds before rejecting the promise | `10000`
   `v` | [API version](https://developers.google.com/maps/documentation/javascript/versions) | `undefined`
