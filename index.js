@@ -1,3 +1,5 @@
+let googleMaps;
+
 export default ({
   client,
   key,
@@ -7,6 +9,9 @@ export default ({
   timeout = 10000,
   v
 } = {}) => {
+  if (googleMaps) {
+    return Promise.resolve(googleMaps);
+  }
 
   const callbackName = '__googleMapsApiOnLoadCallback';
 
@@ -43,6 +48,9 @@ export default ({
       if (timeoutId !== null) {
         clearTimeout(timeoutId);
       }
+
+      googleMaps = window.google.maps;
+
       resolve(window.google.maps);
       delete window[callbackName];
     };
