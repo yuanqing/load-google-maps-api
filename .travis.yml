@@ -4,9 +4,8 @@ notifications:
 language: node_js
 
 node_js:
-  - '5'
-  - '4'
-  - '0.12'
+  - '6'
+  - 'stable'
 
 before_script:
   - export CHROME_BIN=chromium-browser
@@ -14,5 +13,5 @@ before_script:
   - sh -e /etc/init.d/xvfb start
 
 script:
-  - npm run lint
-  - npm test
+  - yarn run lint
+  - yarn run test

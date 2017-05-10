@@ -1,55 +1,52 @@
-export default ({
-  client,
-  key,
-  language,
-  libraries = [],
-  region,
-  timeout = 10000,
-  v
-} = {}) => {
+var CALLBACK_NAME = '__googleMapsApiOnLoadCallback'
 
-  const callbackName = '__googleMapsApiOnLoadCallback';
+var OPTIONS_KEYS = ['client', 'key', 'language', 'region', 'v']
 
-  return new Promise((resolve, reject) => {
+module.exports = function(options) {
+  options = options || {}
 
+  return new Promise(function(resolve, reject) {
     // Exit if not running inside a browser.
     if (typeof window === 'undefined') {
-      return reject(new Error('Can only load the Google Maps API in the browser'));
+      return reject(
+        new Error('Can only load the Google Maps API in the browser')
+      )
     }
 
-    // Prepare the `script` tag to be inserted into the page.
-    const scriptElement = document.createElement('script');
-    const params = [`callback=${callbackName}`];
-    if (client) params.push(`client=${client}`);
-    if (key) params.push(`key=${key}`);
-    if (language) params.push(`language=${language}`);
-    libraries = [].concat(libraries); // Ensure that `libraries` is an array
-    if (libraries.length) params.push(`libraries=${libraries.join(',')}`);
-    if (region) params.push(`region=${region}`);
-    if (v) params.push(`v=${v}`);
-    scriptElement.src = `https://maps.googleapis.com/maps/api/js?${params.join('&')}`;
+    var timeoutId = null
 
     // Timeout if necessary.
-    let timeoutId = null;
-    if (timeout) {
-      timeoutId = setTimeout(() => {
-        window[callbackName] = () => {}; // Set the on load callback to a no-op.
-        reject(new Error('Could not load the Google Maps API'));
-      }, timeout);
+    if (options.timeout) {
+      timeoutId = setTimeout(function() {
+        window[CALLBACK_NAME] = function() {} // Set the on load callback to a no-op.
+        reject(new Error('Could not load the Google Maps API'))
+      }, options.timeout)
     }
 
     // Hook up the on load callback.
-    window[callbackName] = () => {
+    window[CALLBACK_NAME] = function() {
       if (timeoutId !== null) {
-        clearTimeout(timeoutId);
+        clearTimeout(timeoutId)
       }
-      resolve(window.google.maps);
-      delete window[callbackName];
-    };
+      resolve(window.google.maps)
+      delete window[CALLBACK_NAME]
+    }
+
+    // Prepare the `script` tag to be inserted into the page.
+    var scriptElement = document.createElement('script')
+    var params = ['callback=' + CALLBACK_NAME]
+    OPTIONS_KEYS.forEach(function(key) {
+      if (options[key]) {
+        params.push(key + '=' + options[key])
+      }
+    })
+    if (options.libraries && options.libraries.length) {
+      params.push('libraries=' + options.libraries.join(','))
+    }
+    scriptElement.src =
+      'https://maps.googleapis.com/maps/api/js?' + params.join('&')
 
     // Insert the `script` tag.
-    document.body.appendChild(scriptElement);
-
-  });
-
-};
+    document.body.appendChild(scriptElement)
+  })
+}

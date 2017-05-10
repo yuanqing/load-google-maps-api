@@ -5,13 +5,13 @@
 ## Usage
 
 ```js
-import loadGoogleMapsAPI from 'load-google-maps-api';
+const loadGoogleMapsAPI = require('load-google-maps-api')
 
-loadGoogleMapsAPI().then((googleMaps) => {
-  console.log(googleMaps); //=> Object { Animation: Object, ...
+loadGoogleMapsAPI().then(function(googleMaps) {
+  console.log(googleMaps) //=> Object { Animation: Object, ...
 }).catch((err) => {
-  console.error(err);
-});
+  console.error(err)
+})
 ```
 
 Read [the source](index.js) to understand how this works.
@@ -36,7 +36,7 @@ This module abstracts this ceremony away, and fits better with [Browserify](http
 ## API
 
 ```js
-import loadGoogleMapsAPI from 'load-google-maps-api';
+const loadGoogleMapsAPI = require('load-google-maps-api')
 ```
 
 ### loadGoogleMapsAPI([options])
@@ -60,9 +60,15 @@ Returns a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Refe
 
 ## Installation
 
-Install via [npm](https://npmjs.com):
+Install via [yarn](https://yarnpkg.com):
 
+```bash
+$ yarn add load-google-maps-api
 ```
+
+Or [npm](https://npmjs.com):
+
+```bash
 $ npm install --save load-google-maps-api
 ```
 
