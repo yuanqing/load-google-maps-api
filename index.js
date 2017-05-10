@@ -13,15 +13,11 @@ module.exports = function(options) {
       )
     }
 
-    var timeoutId = null
-
-    // Timeout if necessary.
-    if (options.timeout) {
-      timeoutId = setTimeout(function() {
-        window[CALLBACK_NAME] = function() {} // Set the on load callback to a no-op.
-        reject(new Error('Could not load the Google Maps API'))
-      }, options.timeout)
-    }
+    // Reject the promise after a timeout.
+    var timeoutId = setTimeout(function() {
+      window[CALLBACK_NAME] = function() {} // Set the on load callback to a no-op.
+      reject(new Error('Could not load the Google Maps API'))
+    }, options.timeout || 10000)
 
     // Hook up the on load callback.
     window[CALLBACK_NAME] = function() {
