@@ -1,6 +1,6 @@
 var CALLBACK_NAME = '__googleMapsApiOnLoadCallback'
 
-var OPTIONS_KEYS = ['client', 'key', 'language', 'region', 'v']
+var OPTIONS_KEYS = ['channel', 'client', 'key', 'language', 'region', 'v']
 
 module.exports = function(options) {
   options = options || {}
