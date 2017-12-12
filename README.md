@@ -52,7 +52,7 @@ Returns a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Refe
   :--|:--|:--
   `channel` | [Client usage reporting channel](https://developers.google.com/maps/premium/reports/usage-reports#channels) | `undefined`
   `client` | [Client ID](https://developers.google.com/maps/documentation/javascript/get-api-key#specifying-a-client-id-when-loading-the-api) | `undefined`
-  `key` | [Your API key](https://developers.google.com/maps/documentation/javascript/get-api-key#specify-a-key-when-loading-the-api) | `undefined`
+  `key` | [Your API key](https://developers.google.com/maps/documentation/javascript/get-api-key#step-2-add-the-api-key-to-your-application) | `undefined`
   `language` | [Language](https://developers.google.com/maps/documentation/javascript/localization#Language) | `undefined`
   `libraries` | [Supplemental libraries to load](https://developers.google.com/maps/documentation/javascript/libraries) | `[]`
   `region` | [Region](https://developers.google.com/maps/documentation/javascript/localization#Region) | `undefined`
