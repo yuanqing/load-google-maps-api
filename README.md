@@ -11,6 +11,8 @@
 > [**Editable demo (CodePen)**](https://codepen.io/lyuanqing/pen/YeYBrN)
 
 ```js
+const loadGoogleMapsApi = require('load-google-maps-api')
+
 loadGoogleMapsApi().then(function (googleMaps) {
   new googleMaps.Map(document.querySelector('.map'), {
     center: {
@@ -44,10 +46,10 @@ This module abstracts this ceremony away, and fits better with modern bundlers l
 ## API
 
 ```js
-const loadGoogleMapsAPI = require('load-google-maps-api')
+const loadGoogleMapsApi = require('load-google-maps-api')
 ```
 
-### loadGoogleMapsAPI([options])
+### loadGoogleMapsApi([options])
 
 Returns a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise).
 
