@@ -1,37 +1,45 @@
 # load-google-maps-api [![npm Version](http://img.shields.io/npm/v/load-google-maps-api.svg?style=flat)](https://www.npmjs.com/package/load-google-maps-api) [![Build Status](https://img.shields.io/travis/yuanqing/load-google-maps-api.svg?branch=master&style=flat)](https://travis-ci.org/yuanqing/load-google-maps-api)
 
-> A thin, [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)-returning helper for loading the [Google Maps JavaScript API](https://developers.google.com/maps/documentation/javascript/).
+> A thin, [Promise](https://developers.google.com/web/fundamentals/primers/promises)-returning helper for loading the [Google Maps JavaScript API](https://developers.google.com/maps/documentation/javascript/).
+
+- The Promise&rsquo;s fulfilled callback is passed the `google.maps` object
+- Optionally set a timeout, an API key, the language, [and more](#loadgooglemapsapioptions)
+- 456 bytes gzipped
 
 ## Usage
 
-```js
-const loadGoogleMapsAPI = require('load-google-maps-api')
+> [**Editable demo (CodePen)**](https://codepen.io/lyuanqing/pen/YeYBrN)
 
-loadGoogleMapsAPI().then(function(googleMaps) {
-  console.log(googleMaps) //=> Object { Animation: Object, ...
-}).catch((err) => {
-  console.error(err)
+```js
+loadGoogleMapsApi().then(function (googleMaps) {
+  new googleMaps.Map(document.querySelector('.map'), {
+    center: {
+      lat: 40.7484405,
+      lng: -73.9944191
+    },
+    zoom: 12
+  })
+}).catch(function (error) {
+  console.error(error)
 })
 ```
-
-Read [the source](index.js) to understand how this works.
 
 *N.B.* Just like the Google Maps API itself, this module is client-side only.
 
 ## Why
 
-Without this module, you would need to specify a named *global* callback, and pass said callback&rsquo;s name as a parameter in the `script` tag&rsquo;s `src`. For example:
+[Without this module](https://developers.google.com/maps/documentation/javascript/tutorial#Loading_the_Maps_API), you would need to specify a named *global* callback, and pass said callback&rsquo;s name as a parameter in the `script` tag&rsquo;s `src`. For example:
 
 ```html
 <script>
-window.googleMapsOnLoad = () => {
-  // `google.maps` available here
+window.googleMapsOnLoad = function () {
+  // `window.google.maps` available here
 }
 </script>
 <script async defer src="https://maps.googleapis.com/maps/api/js?callback=googleMapsOnLoad"></script>
 ```
 
-This module abstracts this ceremony away, and fits better with [Browserify](http://browserify.org/) or [Webpack](https://webpack.github.io/).
+This module abstracts this ceremony away, and fits better with modern bundlers like [Browserify](http://browserify.org/) or [Webpack](https://webpack.github.io/).
 
 ## API
 
@@ -41,10 +49,12 @@ const loadGoogleMapsAPI = require('load-google-maps-api')
 
 ### loadGoogleMapsAPI([options])
 
-Returns a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise). (See [Usage](#usage).)
+Returns a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise).
 
-- **Fulfilled** if load was successful. The fulfilled callback is passed the `google.maps` object.
+- **Fulfilled** if loading was successful. The fulfilled callback is passed the `google.maps` object.
 - **Rejected** if we weren&rsquo;t able to load the Google Maps API after `options.timeout`.
+
+See [Usage](#usage).
 
 `options` is an optional object literal:
 
@@ -56,20 +66,20 @@ Returns a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Refe
   `language` | [Language](https://developers.google.com/maps/documentation/javascript/localization#Language) | `undefined`
   `libraries` | [Supplemental libraries to load](https://developers.google.com/maps/documentation/javascript/libraries) | `[]`
   `region` | [Region](https://developers.google.com/maps/documentation/javascript/localization#Region) | `undefined`
-  `timeout` | Time in milliseconds before rejecting the promise | `10000`
+  `timeout` | Time in milliseconds before rejecting the Promise | `10000`
   `v` | [API version](https://developers.google.com/maps/documentation/javascript/versions) | `undefined`
 
 ## Installation
 
 Install via [yarn](https://yarnpkg.com):
 
-```bash
+```sh
 $ yarn add load-google-maps-api
 ```
 
 Or [npm](https://npmjs.com):
 
-```bash
+```sh
 $ npm install --save load-google-maps-api
 ```
 
