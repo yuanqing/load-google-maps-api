@@ -9,13 +9,26 @@
     "url": "git://github.com/yuanqing/load-google-maps-api.git"
   },
   "devDependencies": {
-    "browserify": "^14.3.0",
-    "prettier": "^1.2.2",
-    "tape": "^4.6.3",
-    "tape-run": "^3.0.0"
+    "browserify": "^16.1.0",
+    "gzip-size-cli": "^2.1.0",
+    "prettier-standard": "^8.0.0",
+    "tape": "^4.8.0",
+    "tape-run": "^3.0.4",
+    "uglify-js": "^3.3.11"
   },
   "scripts": {
-    "lint": "prettier *.js --no-semi --single-quote --write",
-    "test": "browserify test.js | tape-run"
-  }
+    "lint": "prettier-standard *.js --no-semi --single-quote --write",
+    "test": "browserify test.js | tape-run",
+    "weight": "uglifyjs index.js --compress --mangle --toplevel | gzip-size"
+  },
+  "keywords": [
+    "api",
+    "google",
+    "google-maps",
+    "google-maps-api",
+    "loader",
+    "maps",
+    "promise",
+    "typography"
+  ]
 }
