@@ -6,13 +6,6 @@ module.exports = function (options) {
   options = options || {}
 
   return new Promise(function (resolve, reject) {
-    // Exit if not running inside a browser.
-    if (typeof window === 'undefined') {
-      return reject(
-        new Error('Can only load the Google Maps API in the browser')
-      )
-    }
-
     // Reject the promise after a timeout.
     var timeoutId = setTimeout(function () {
       window[CALLBACK_NAME] = function () {} // Set the on load callback to a no-op.
