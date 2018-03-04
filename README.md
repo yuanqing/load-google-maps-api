@@ -4,7 +4,7 @@
 
 - The Promise&rsquo;s fulfilled callback is passed the `google.maps` object
 - Optionally set a timeout, an API key, the language, [and more](#loadgooglemapsapioptions)
-- 456 bytes gzipped
+- 414 bytes gzipped
 
 ## Usage
 
