@@ -12,12 +12,14 @@
     "browserify": "^16.1.0",
     "gzip-size-cli": "^2.1.0",
     "prettier-standard": "^8.0.0",
-    "tape": "^4.8.0",
+    "standard": "^11.0.0",
+    "tape": "^4.9.0",
     "tape-run": "^3.0.4",
-    "uglify-js": "^3.3.11"
+    "uglify-js": "^3.3.12"
   },
   "scripts": {
-    "lint": "prettier-standard *.js --no-semi --single-quote --write",
+    "fix": "prettier-standard '*.js'",
+    "lint": "standard '*.js'",
     "test": "browserify test.js | tape-run",
     "weight": "uglifyjs index.js --compress --mangle --toplevel | gzip-size"
   },
