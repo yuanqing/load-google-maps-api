@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.2.0
+
+- Remove check on `window`
+- Add `standard`
+- Bump dependencies
+
 ## 1.1.0
 
 - Add a simple CodePen
