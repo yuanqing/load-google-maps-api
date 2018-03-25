@@ -34,7 +34,6 @@
     "google-maps-api",
     "loader",
     "maps",
-    "promise",
-    "typography"
+    "promise"
   ]
 }
