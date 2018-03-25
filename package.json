@@ -18,6 +18,7 @@
     "uglify-js": "^3.3.12"
   },
   "scripts": {
+    "clean": "rm -rf *.log",
     "fix": "prettier-standard '*.js'",
     "lint": "standard '*.js'",
     "test": "browserify test.js | tape-run",
