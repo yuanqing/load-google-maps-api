@@ -10,7 +10,7 @@ module.exports = function (options) {
     if (window.google && window.google.maps) {
       return resolve(window.google.maps)
     }
-    
+
     // Reject the promise after a timeout.
     var timeoutId = setTimeout(function () {
       window[CALLBACK_NAME] = function () {} // Set the on load callback to a no-op.
