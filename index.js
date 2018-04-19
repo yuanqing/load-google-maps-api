@@ -6,6 +6,11 @@ module.exports = function (options) {
   options = options || {}
 
   return new Promise(function (resolve, reject) {
+    // Check if Google Maps API has already been loaded
+    if (window.google && window.google.maps) {
+      return resolve(window.google.maps)
+    }
+    
     // Reject the promise after a timeout.
     var timeoutId = setTimeout(function () {
       window[CALLBACK_NAME] = function () {} // Set the on load callback to a no-op.
