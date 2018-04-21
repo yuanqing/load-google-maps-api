@@ -4,7 +4,7 @@
 
 - The Promise&rsquo;s fulfilled callback is passed the `google.maps` object
 - Optionally set a timeout, an API key, the language, [and more](#loadgooglemapsapioptions)
-- 414 bytes gzipped
+- 429 bytes gzipped
 
 ## Usage
 
@@ -53,7 +53,7 @@ const loadGoogleMapsApi = require('load-google-maps-api')
 
 Returns a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise).
 
-- **Fulfilled** if loading was successful. The fulfilled callback is passed the `google.maps` object.
+- **Fulfilled** if loading was successful. The fulfilled callback is passed the `google.maps` object. If `loadGoogleMapsApi` is called multiple times on a page, the fulfilled callback will be passed the previously-loaded `google.maps` object.
 - **Rejected** if we weren&rsquo;t able to load the Google Maps API after `options.timeout`.
 
 See [Usage](#usage).
