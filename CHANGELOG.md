@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.3.0
+
+- Return `google.maps` if previously-loaded
+
 ## 1.2.0
 
 - Remove check on `window`
