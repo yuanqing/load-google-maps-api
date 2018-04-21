@@ -6,18 +6,18 @@ module.exports = function (options) {
   options = options || {}
 
   return new Promise(function (resolve, reject) {
-    // Check if Google Maps API has already been loaded
+    // Check if the Google Maps API has already been loaded
     if (window.google && window.google.maps) {
       return resolve(window.google.maps)
     }
 
-    // Reject the promise after a timeout.
+    // Reject the promise after a timeout
     var timeoutId = setTimeout(function () {
-      window[CALLBACK_NAME] = function () {} // Set the on load callback to a no-op.
+      window[CALLBACK_NAME] = function () {} // Set the on load callback to a no-op
       reject(new Error('Could not load the Google Maps API'))
     }, options.timeout || 10000)
 
-    // Hook up the on load callback.
+    // Hook up the on load callback
     window[CALLBACK_NAME] = function () {
       if (timeoutId !== null) {
         clearTimeout(timeoutId)
@@ -26,7 +26,7 @@ module.exports = function (options) {
       delete window[CALLBACK_NAME]
     }
 
-    // Prepare the `script` tag to be inserted into the page.
+    // Prepare the `script` tag to be inserted into the page
     var scriptElement = document.createElement('script')
     var params = ['callback=' + CALLBACK_NAME]
     OPTIONS_KEYS.forEach(function (key) {
@@ -40,7 +40,7 @@ module.exports = function (options) {
     scriptElement.src =
       'https://maps.googleapis.com/maps/api/js?' + params.join('&')
 
-    // Insert the `script` tag.
+    // Insert the `script` tag
     document.body.appendChild(scriptElement)
   })
 }
