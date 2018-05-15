@@ -11,6 +11,8 @@
   "devDependencies": {
     "browserify": "^16.1.1",
     "gzip-size-cli": "^2.1.0",
+    "husky": "^0.14.3",
+    "lint-staged": "^7.1.0",
     "prettier-standard": "^8.0.0",
     "rimraf": "^2.6.2",
     "standard": "^11.0.1",
@@ -24,6 +26,12 @@
     "lint": "standard '*.js'",
     "test": "browserify test.js | tape-run",
     "weight": "uglifyjs index.js --compress --mangle --toplevel | gzip-size"
+  },
+  "lint-staged": {
+    "*.js": [
+      "standard",
+      "git add"
+    ]
   },
   "files": [
     "index.js"
