@@ -24,6 +24,7 @@
     "clean": "rimraf '*.log'",
     "fix": "prettier-standard '*.js'",
     "lint": "standard '*.js'",
+    "precommit": "lint-staged",
     "test": "browserify test.js | tape-run",
     "weight": "uglifyjs index.js --compress --mangle --toplevel | gzip-size"
   },
