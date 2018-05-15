@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.3.1
+
+- Support repeated/duplicate calls by caching and returning the initial Promise
+
 ## 1.3.0
 
 - Return `google.maps` if previously-loaded
