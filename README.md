@@ -1,10 +1,9 @@
-# load-google-maps-api [![npm Version](http://img.shields.io/npm/v/load-google-maps-api.svg?style=flat)](https://www.npmjs.com/package/load-google-maps-api) [![Build Status](https://img.shields.io/travis/yuanqing/load-google-maps-api.svg?branch=master&style=flat)](https://travis-ci.org/yuanqing/load-google-maps-api)
+# load-google-maps-api [![npm Version](https://badgen.net/npm/v/load-google-maps-api)](https://www.npmjs.org/package/load-google-maps-api) [![Build Status](https://badgen.net/travis/yuanqing/load-google-maps-api?label=build)](https://travis-ci.org/yuanqing/load-google-maps-api) [![Bundle Size](https://badgen.net/bundlephobia/minzip/load-google-maps-api)](https://bundlephobia.com/result?p=load-google-maps-api)
 
 > A thin, [Promise](https://developers.google.com/web/fundamentals/primers/promises)-returning helper for loading the [Google Maps JavaScript API](https://developers.google.com/maps/documentation/javascript/).
 
-- The Promise&rsquo;s fulfilled callback is passed the `google.maps` object
+- The Promise’s fulfilled callback is passed the `google.maps` object
 - Optionally set a timeout, an API key, the language, [and more](#loadgooglemapsapioptions)
-- 424 bytes gzipped
 
 ## Usage
 
@@ -30,7 +29,7 @@ loadGoogleMapsApi().then(function (googleMaps) {
 
 ## Why
 
-[Without this module](https://developers.google.com/maps/documentation/javascript/tutorial#Loading_the_Maps_API), you would need to specify a named *global* callback, and pass said callback&rsquo;s name as a parameter in the `script` tag&rsquo;s `src`. For example:
+[Without this module](https://developers.google.com/maps/documentation/javascript/tutorial#Loading_the_Maps_API), you would need to specify a named *global* callback, and pass said callback’s name as a parameter in the `script` tag’s `src`. For example:
 
 ```html
 <script>
@@ -54,7 +53,7 @@ const loadGoogleMapsApi = require('load-google-maps-api')
 Returns a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise).
 
 - **Fulfilled** if loading was successful. The fulfilled callback is passed the `google.maps` object. If `loadGoogleMapsApi` is called multiple times on a page, the fulfilled callback will be passed the previously-loaded `google.maps` object.
-- **Rejected** if we weren&rsquo;t able to load the Google Maps API after `options.timeout`.
+- **Rejected** if we weren’t able to load the Google Maps API after `options.timeout`.
 
 See [Usage](#usage).
 
@@ -73,16 +72,8 @@ See [Usage](#usage).
 
 ## Installation
 
-Install via [yarn](https://yarnpkg.com):
-
 ```sh
 $ yarn add load-google-maps-api
-```
-
-Or [npm](https://npmjs.com):
-
-```sh
-$ npm install --save load-google-maps-api
 ```
 
 ## License
