@@ -1,10 +1,13 @@
+var DEFAULT_URL = 'https://maps.googleapis.com'
+var CN_URL = 'https://maps.google.cn'
+
 var CALLBACK_NAME = '__googleMapsApiOnLoadCallback'
 
 var OPTIONS_KEYS = ['channel', 'client', 'key', 'language', 'region', 'v']
 
 var promise = null
 
-module.exports = function (options) {
+module.exports = function (options, useCN = false) {
   options = options || {}
 
   if (!promise) {
@@ -36,7 +39,7 @@ module.exports = function (options) {
         params.push('libraries=' + options.libraries.join(','))
       }
       scriptElement.src =
-        'https://maps.googleapis.com/maps/api/js?' + params.join('&')
+        (useCN ? CN_URL : DEFAULT_URL) + '/maps/api/js?' + params.join('&')
 
       // Insert the `script` tag
       document.body.appendChild(scriptElement)
