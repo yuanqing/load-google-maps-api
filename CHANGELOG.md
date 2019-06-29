@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.0.0
+
+- Bump dependencies
+- Use modern syntax, namely let/const and default parameters
+
 ## 1.3.1
 
 - Support repeated/duplicate calls by caching and returning the initial Promise
