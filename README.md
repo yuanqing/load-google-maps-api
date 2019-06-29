@@ -1,6 +1,6 @@
 # load-google-maps-api [![npm Version](https://badgen.net/npm/v/load-google-maps-api)](https://www.npmjs.org/package/load-google-maps-api) [![Build Status](https://badgen.net/travis/yuanqing/load-google-maps-api?label=build)](https://travis-ci.org/yuanqing/load-google-maps-api) [![Bundle Size](https://badgen.net/bundlephobia/minzip/load-google-maps-api)](https://bundlephobia.com/result?p=load-google-maps-api)
 
-> A thin, [Promise](https://developers.google.com/web/fundamentals/primers/promises)-returning helper for loading the [Google Maps JavaScript API](https://developers.google.com/maps/documentation/javascript/).
+> A lightweight Promise-returning helper for loading the [Google Maps JavaScript API](https://developers.google.com/maps/documentation/javascript/)
 
 - The Promise’s fulfilled callback is passed the `google.maps` object
 - Optionally set a timeout, an API key, the language, [and more](#loadgooglemapsapioptions)
@@ -27,7 +27,7 @@ loadGoogleMapsApi().then(function (googleMaps) {
 
 *N.B.* Just like the Google Maps API itself, this module is client-side only.
 
-## Why
+## Motivation
 
 [Without this module](https://developers.google.com/maps/documentation/javascript/tutorial#Loading_the_Maps_API), you would need to specify a named *global* callback, and pass said callback’s name as a parameter in the `script` tag’s `src`. For example:
 
@@ -61,6 +61,7 @@ See [Usage](#usage).
 
   Key | Description | Default
   :--|:--|:--
+  `apiUrl` | The Google Maps API `script` tag URL | `'https://maps.googleapis.com/maps/api/js'`
   `channel` | [Client usage reporting channel](https://developers.google.com/maps/premium/reports/usage-reports#channels) | `undefined`
   `client` | [Client ID](https://developers.google.com/maps/documentation/javascript/get-api-key#specifying-a-client-id-when-loading-the-api) | `undefined`
   `key` | [Your API key](https://developers.google.com/maps/documentation/javascript/get-api-key#step-2-add-the-api-key-to-your-application) | `undefined`
