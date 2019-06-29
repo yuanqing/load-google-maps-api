@@ -1,16 +1,16 @@
-var CALLBACK_NAME = '__googleMapsApiOnLoadCallback'
+const API_URL = 'https://maps.googleapis.com/maps/api/js'
+const CALLBACK_NAME = '__googleMapsApiOnLoadCallback'
 
-var OPTIONS_KEYS = ['channel', 'client', 'key', 'language', 'region', 'v']
+const optionsKeys = ['channel', 'client', 'key', 'language', 'region', 'v']
 
-var promise = null
+let promise = null
 
-module.exports = function (options) {
-  options = options || {}
-
-  if (!promise) {
-    promise = new Promise(function (resolve, reject) {
+module.exports = function (options = {}) {
+  promise =
+    promise ||
+    new Promise(function (resolve, reject) {
       // Reject the promise after a timeout
-      var timeoutId = setTimeout(function () {
+      const timeoutId = setTimeout(function () {
         window[CALLBACK_NAME] = function () {} // Set the on load callback to a no-op
         reject(new Error('Could not load the Google Maps API'))
       }, options.timeout || 10000)
@@ -25,23 +25,20 @@ module.exports = function (options) {
       }
 
       // Prepare the `script` tag to be inserted into the page
-      var scriptElement = document.createElement('script')
-      var params = ['callback=' + CALLBACK_NAME]
-      OPTIONS_KEYS.forEach(function (key) {
+      const scriptElement = document.createElement('script')
+      const params = [`callback=${CALLBACK_NAME}`]
+      optionsKeys.forEach(function (key) {
         if (options[key]) {
-          params.push(key + '=' + options[key])
+          params.push(`${key}=${options[key]}`)
         }
       })
       if (options.libraries && options.libraries.length) {
-        params.push('libraries=' + options.libraries.join(','))
+        params.push(`libraries=${options.libraries.join(',')}`)
       }
-      scriptElement.src =
-        'https://maps.googleapis.com/maps/api/js?' + params.join('&')
+      scriptElement.src = `${options.apiUrl || API_URL}?${params.join('&')}`
 
       // Insert the `script` tag
       document.body.appendChild(scriptElement)
     })
-  }
-
   return promise
 }
