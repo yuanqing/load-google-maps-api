@@ -4,7 +4,7 @@ notifications:
 language: node_js
 
 services:
-  - svfb
+  - xvfb
 
 node_js:
   - "node"
