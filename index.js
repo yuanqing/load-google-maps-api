@@ -26,12 +26,12 @@ module.exports = function (options = {}) {
 
       // Prepare the `script` tag to be inserted into the page
       const scriptElement = document.createElement('script')
-      const params = [`callback=${CALLBACK_NAME}`]
-      optionsKeys.forEach(function (key) {
-        if (options[key]) {
-          params.push(`${key}=${options[key]}`)
-        }
-      })
+
+      const params = optionsKeys.reduce((acc, key) => {
+        if (options[key]) acc.push(`${key}=${options[key]}`)
+        return acc
+      }, [`callback=${CALLBACK_NAME}`])
+
       if (options.libraries && options.libraries.length) {
         params.push(`libraries=${options.libraries.join(',')}`)
       }
