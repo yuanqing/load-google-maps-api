@@ -1,6 +1,6 @@
 const API_URL = 'https://maps.googleapis.com/maps/api/js'
 const CALLBACK_NAME = '__googleMapsApiOnLoadCallback'
-const GOOGLE_SCRIPT_ID = 'google-map-api-key'
+const GOOGLE_SCRIPT_ID = 'google-map-script'
 
 const optionsKeys = ['channel', 'client', 'key', 'language', 'region', 'v']
 
