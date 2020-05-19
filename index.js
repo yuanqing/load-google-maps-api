@@ -1,11 +1,22 @@
 const API_URL = 'https://maps.googleapis.com/maps/api/js'
 const CALLBACK_NAME = '__googleMapsApiOnLoadCallback'
+const GOOGLE_SCRIPT_ID = 'google-map-api-key'
 
 const optionsKeys = ['channel', 'client', 'key', 'language', 'region', 'v']
 
 let promise = null
+let preOptions = null
 
 module.exports = function (options = {}) {
+  if (preOptions !== options && promise !== null) {
+    promise = null
+    preOptions = options
+    const child = document.getElementById(GOOGLE_SCRIPT_ID)
+    if (child) {
+      child.parentNode.removeChild(child)
+      delete window.google.maps
+    }
+  }
   promise =
     promise ||
     new Promise(function (resolve, reject) {
@@ -36,6 +47,7 @@ module.exports = function (options = {}) {
         params.push(`libraries=${options.libraries.join(',')}`)
       }
       scriptElement.src = `${options.apiUrl || API_URL}?${params.join('&')}`
+      scriptElement.id = GOOGLE_SCRIPT_ID
 
       // Insert the `script` tag
       document.body.appendChild(scriptElement)
