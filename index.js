@@ -8,12 +8,7 @@ let promise = null
 let preOptions = null
 
 function isOptEq (preOptions, options) {
-  optionsKeys.forEach(function (key) {
-    if (options[key] !== preOptions[key]) {
-      return false
-    }
-  })
-  return preOptions.libraries.join(',') === options.libraries.join(',')
+  return JSON.stringify(preOptions) !== JSON.stringify(options)
 }
 
 module.exports = function (options = {}) {
