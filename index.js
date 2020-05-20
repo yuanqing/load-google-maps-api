@@ -7,8 +7,17 @@ const optionsKeys = ['channel', 'client', 'key', 'language', 'region', 'v']
 let promise = null
 let preOptions = null
 
+function isOptEq (preOptions, options) {
+  optionsKeys.forEach(function (key) {
+    if (options[key] !== preOptions[key]) {
+      return false
+    }
+  })
+  return preOptions.libraries.join(',') === options.libraries.join(',')
+}
+
 module.exports = function (options = {}) {
-  if (preOptions !== options && promise !== null) {
+  if (isOptEq(preOptions, options) && promise !== null) {
     promise = null
     preOptions = options
     const child = document.getElementById(GOOGLE_SCRIPT_ID)
